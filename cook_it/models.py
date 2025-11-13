@@ -8,7 +8,7 @@ class Category(models.Model):
 
     # this helps the linter understand the reverse relationship from Recipe
     recipes: models.manager.Manager['Recipe']
-    # these are properties that give the average cost and raiting 
+    # these are properties that give the average cost and raiting
     @property
     def average_cost(self):
         result = self.recipes.aggregate(avg_cost=models.Avg('cost'))

@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+.env/
+
+# SQLite database
+*.sqlite3
+
+# Media and Static files (if collected/generated, not source)
+media/
+static/
+
+# Logs and backups
+*.log
+*.bak
+
+# IDE and editor settings (examples for popular IDEs)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables and settings (sensitive info)
+.env
+local_settings.py # Or any other file holding local/sensitive settings
+
+# Testing and coverage reports
+.tox/
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Deployment files
+*.tar.gz
+*.zip
+
+# Django migrations cache (if not committing migrations)
+# migrations/**/__pycache__/
