@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<head>
-    {% load static %}
-    <Title></Title>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <script src="{% static 'js/main.js' %}" defer></script>
-</head>
-<body>
-
-</body>
-<footer>
-    
-</footer>
+<html lang="en">
+    <head>
+        {% load static %}
+        <title>Cook It!</title>
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+        <script src="{% static 'js/main.js' %}" defer></script>
+    </head>
+    <body>
+        <main>
+            {% block content %}
+            <!-- Child template content will be inserted here -->
+            {% endblock %}
+        </main>
+    </body>
+    <footer></footer>
+</html>
