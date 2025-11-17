@@ -80,19 +80,69 @@ class BaseTestCase(TestCase):
             text="Looks delicious!"
         )
 
-
-
+'''
+sorry its a bit overkill, but i'm just practing the test cases
+literally testing everything lmao
+-JT
+'''
 class CategoryModelTests(BaseTestCase):
-    pass
+    def test_str(self):
+        self.assertEqual(str(self.cat_baking), "Baking")
+    def test_avg_cost(self):
+        self.assertAlmostEqual(self.cat_baking.average_cost,6.75)
+    def test_avg_raiting(self):
+        self.assertAlmostEqual(self.cat_baking.average_rating, 4.25)
+    def test_recipes(self):
+        self.assertCountEqual(self.cat_baking.recipes.all(), (self.recipe_bread, self.recipe_cookies))
 
 class RecipeModelTests(BaseTestCase):
-    pass
+    def test_str(self):
+        self.assertEqual(str(self.recipe_bread), 'Classic Bread')
+    def test_name(self):
+        self.assertEqual(self.recipe_bread.name, 'Classic Bread')
+    def test_author(self):
+        self.assertEqual(self.recipe_bread.author, self.user_a)
+    def test_cost(self):
+        self.assertEqual(self.recipe_bread.cost, 5.50)
+    def test_cook_time(self):
+        pass
+    def test_raiting(self):
+        pass
+    def test_category(self):
+        pass
+    def test_ingredients(self):
+        pass
+    def test_instructions(self):
+        pass
 
 class IngredientModelTests(BaseTestCase):
-    pass
+    def test_str(self):
+        pass
+    def test_recipe(self):
+        pass
+    def test_quantity(self):
+        pass
+    def test_unit(self):
+        pass
+    def test_name(self):
+        pass
 
 class InstructionModelTests(BaseTestCase):
-    pass
+    def test_str(self):
+        pass
+    def test_order(self):
+        pass
+    def test_step_number(self):
+        pass
+    def test_description(self):
+        pass
 
 class CommentModelTests(BaseTestCase):
-    pass
+    def test_str(self):
+        pass
+    def test_author(self):
+        pass
+    def test_recipe(self):
+        pass
+    def test_text(self):
+        pass
