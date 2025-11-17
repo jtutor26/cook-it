@@ -1,12 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <head>
-    {% load static %}
     <Title></Title>
     <link href="{% static css/style.css %}" rel="style">
     <script src="{% static js/main.js %}" defer></script>
+    <title>Cook-it!</title>
 </head>
 <body>
-
+    <div class="button"><button>Sign In</button></div>
+    {%block content%} {%endblock content%}
+    <div>
+        {% for cook in cook_it%}
+        <button type="button" onclick="navigateToPage('{{cook}}')"><a href="{% url 'detail' team%}">{{cook}}</a></button>
+        {% endfor %}
+    </div>
 </body>
 <footer>
     
