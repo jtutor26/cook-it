@@ -1,20 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
 <head>
-    <Title></Title>
+    <Title>Cook-it!</Title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <script src="{% static 'js/main.js' %}" defer></script>
-    <title>Cook-it!</title>
 </head>
 <body>
-    <div class="button"><button>Sign In</button></div>
-    {%block content%} {%endblock content%}
-    <div>
-        {% for cook in cook_it%}
-        <button type="button" onclick="navigateToPage('{{cook}}')"><a href="{% url 'detail' team%}">{{cook}}</a></button>
-        {% endfor %}
-    </div>
-</body>
-<footer>
     
-</footer>
+    <header class="main-nav">
+        <div class="logo">Cook It!</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'profile' %}">About us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="{% url 'signup' %}" class="sign-up-btn">Sign Up</a>
+        </div>
+    </header>
+
+    {% block content %}{% endblock content %}
+    
+    <footer>
+        </footer>
+    
+</body>
+</html>

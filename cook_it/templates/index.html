@@ -1,7 +1,59 @@
-{%extends 'base.html'%}
-{%load static%}
-    {%block content%}
-        <h1>Coocking Recipes for You!</h1>
-        
-        <p></p>
-    {%endblock content%}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    
+    <div class="main-content-wrapper">
+
+        <section class="featured-recipe-area">
+            
+            {% if featured_recipe %}
+            <div class="featured-content-container">
+                <div class="featured-text-box">
+                    <span class="hot-recipes-tag">Hot Recipes</span>
+                    <h1>{{ featured_recipe.name }}</h1>
+                    <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. (Placeholder text)</p>
+
+                    <div class="recipe-meta">
+                        <span class="meta-item">
+                            {{ featured_recipe.cook_time }}
+                        </span>
+                        <span class="meta-item">
+                            {{ featured_recipe.category.name }}
+                        </span>
+                    </div>
+
+                    <div class="recipe-author-actions">
+                        <div class="author-info">
+                            <span class="author-name">{{ featured_recipe.author.get_full_name }}</span>
+                            <span class="post-date">18 March 2024</span>
+                        </div>
+                        <a href="{% url 'recipe' featured_recipe.id %}" class="view-recipe-btn">View Recipes</a>
+                    </div>
+                </div>
+
+                <div class="featured-image-box">
+                    <span class="handpicked-tag">HANDPICKED RECIPES</span>
+                    <img src="{% static 'img/chicken_wings.jpg' %}" alt="{{ featured_recipe.name }}"> 
+                </div>
+            </div>
+            {% endif %}
+
+        </section>
+
+        <section class="categories-area">
+            <h2>Categories</h2>
+            <a href="#" class="view-all-btn">View All Categories</a>
+            
+            <div class="category-grid">
+                {% for category in categories %}
+                <a href="{% url 'category' category.id %}" class="category-item">
+                    <img src="{% static 'img/icon_'|add:category.name|lower|add:'.png' %}" alt="{{ category.name }}">
+                    <p>{{ category.name }}</p>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+    
+{% endblock content %}

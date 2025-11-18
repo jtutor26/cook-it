@@ -1,3 +1,269 @@
 body{
     background-color: rgb(230, 54, 54);
 }
+
+
+
+
+
+
+/* --- Global Styles --- */
+:root {
+    --color-primary: #E24C4B; /* Dominant Red/Orange */
+    --color-secondary: #FEEB6A; /* Accent Yellow */
+    --color-text-dark: #222222;
+    --color-text-light: #ffffff;
+    --font-heading: 'Georgia', serif; /* Use a distinct serif/sans-serif combination */
+    --font-body: 'Arial', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- 1. Navigation Bar (base.html) --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.main-nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.main-nav nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav nav ul li {
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+.main-nav .sign-up-btn {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.main-nav .sign-up-btn:hover {
+    background-color: #a83837;
+}
+
+/* --- 2. Main Content Wrapper & Featured Area (index.html) --- */
+.main-content-wrapper {
+    background-color: var(--color-primary); /* The main red background */
+    padding: 0 50px 50px 50px;
+}
+
+.featured-recipe-area {
+    padding: 100px 0;
+}
+
+.featured-content-container {
+    display: flex;
+    background-color: var(--color-text-light);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative; /* For the side red bars */
+}
+
+/* Red side bars */
+.featured-content-container::before,
+.featured-content-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30px; 
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: 10;
+}
+
+.featured-content-container::before {
+    left: 0;
+}
+
+.featured-content-container::after {
+    right: 0;
+}
+
+/* --- Featured Text Box --- */
+.featured-text-box {
+    flex: 1;
+    padding: 60px 40px 60px 80px; /* Padding for content inside the white box */
+    color: var(--color-text-dark);
+    position: relative;
+    z-index: 20; /* Keep content above red bars */
+}
+
+.featured-text-box h1 {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    line-height: 1.1;
+    margin: 15px 0 20px 0;
+    color: var(--color-text-dark);
+}
+
+.hot-recipes-tag {
+    background-color: var(--color-secondary);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.recipe-summary {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Meta Data (Time/Category) */
+.recipe-meta {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.meta-item {
+    /* Placeholder for icon styling */
+    font-weight: bold;
+    color: #444;
+}
+
+/* Author and Action */
+.recipe-author-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.author-info {
+    /* Style for profile picture, name, and date */
+    display: flex;
+    flex-direction: column;
+}
+
+.view-recipe-btn {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 15px 35px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* --- Featured Image Box --- */
+.featured-image-box {
+    flex: 1.2;
+    background-color: #f1f1f1; /* Placeholder if image doesn't load */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.featured-image-box img {
+    width: 100%; /* Make the image fill the container */
+    height: 100%;
+    object-fit: cover;
+}
+
+.handpicked-tag {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background-color: var(--color-secondary);
+    padding: 10px 20px;
+    border-radius: 50%; /* Circle shape */
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* --- 3. Categories Area --- */
+.categories-area {
+    background-color: var(--color-primary);
+    padding: 50px 0;
+}
+
+.categories-area h2 {
+    color: var(--color-text-light);
+    font-size: 40px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.view-all-btn {
+    float: right;
+    background-color: var(--color-text-light);
+    color: var(--color-primary);
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columns as shown in the screenshot */
+    gap: 30px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.category-item {
+    background-color: var(--color-text-light);
+    border-radius: 10px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-item img {
+    width: 80px; /* Adjust size for the icons */
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.category-item p {
+    font-weight: bold;
+    color: var(--color-text-dark);
+}
