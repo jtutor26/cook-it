@@ -1,17 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        {% load static %}
-        <title>Cook It!</title>
-        <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-        <script src="{% static 'js/main.js' %}" defer></script>
-    </head>
-    <body>
-        <main>
-            {% block content %}
-            <!-- Child template content will be inserted here -->
-            {% endblock %}
-        </main>
-    </body>
-    <footer></footer>
+<head>
+    <Title>Cook-it!</Title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    
+    <header class="main-nav">
+        <div class="logo">Cook It!</div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url 'profile' %}">About us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="{% url 'signup' %}" class="sign-up-btn">Sign Up</a>
+        </div>
+    </header>
+
+    {% block content %}{% endblock content %}
+    
+    <footer>
+        </footer>
+    
+</body>
 </html>
