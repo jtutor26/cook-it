@@ -9,24 +9,29 @@
     
     <header class="main-nav">
         <div class="logo">Cook It!</div>
+        <img id="logo_picture" src="{% static 'img/cook_it.png' %}" alt="Cook-It Logo">
+
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="#">Recipes</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="{% url 'profile' %}">About us</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="{% url 'signup' %}" class="sign-up-btn">Sign Up</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="sign-up-btn">Logout</a>
+                <a href="{% url 'profile' %}" class="sign-up-btn">Profile</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="sign-up-btn">Login</a>
+                <a href="{% url 'signup' %}" class="sign-up-btn">Sign Up</a>
+            {% endif %}
         </div>
     </header>
 
-    {% block content %}{% endblock content %}
-    
-    <footer>
-        </footer>
-    
+    <div class="main-content-wrapper">
+        {% block content %}{% endblock content %}
+    </div>
+ 
 </body>
 </html>

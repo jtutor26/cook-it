@@ -73,3 +73,24 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'On {self.recipe.name} {self.author.get_full_name} commented: {self.text[:50]}...'
+    
+
+
+
+# models.py (Add this method to the Category model)
+
+#class Category(models.Model):
+    # ... existing fields ...
+    
+    # NEW METHOD to return the full image path based on known extensions
+    #def get_icon_path(self):
+      #  name_lower = self.name.lower()
+       # if name_lower == 'breakfast':
+       #     ext = 'jpg'
+       # elif name_lower in ['dessert', 'vegan']:
+        #    ext = 'png'
+       # else:
+            # Default for chocolate, lunch, meat (and any unknown)
+        #    ext = 'webp' 
+        
+       # return f'img/icon_{name_lower}.{ext}'
