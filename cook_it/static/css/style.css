@@ -1,13 +1,3 @@
-
-body{
-    background-color: rgb(230, 70, 70);
-}
-
-
-
-
-
-
 /* --- Global Styles --- */
 :root {
     --color-primary: #E24C4B; /* Dominant Red/Orange */
@@ -269,4 +259,32 @@ a {
     color: var(--color-text-dark);
 }
 
+
+.categories-area .slider {
+    width: 90%;        
+    max-width: 500px; 
+    height: 220px;   
+    margin: 20px auto; 
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.categories-area .slider img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: none;
+    border-radius: 10px;
+
+}
+
+.categories-area img.displaySlide {
+    display: block;
+}
+
+
+img.displaySlide{
+    display: block;
+}
 

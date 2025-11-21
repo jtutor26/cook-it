@@ -20,7 +20,7 @@ SIGN IN: none needed (i think)
 
 template_paths:dict={
     #'VIEW':'PATH',
-    'home':'base.html',
+    'home':'index.html',
     'category':'base.html',
     'recipe':'base.html',
     'profile':'base.html',

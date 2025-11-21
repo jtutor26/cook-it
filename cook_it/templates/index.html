@@ -43,17 +43,33 @@
 
         <section class="categories-area">
             <h2>Categories</h2>
+    <div class="slider">
+        <div class="slides">
+            <img class="slide" src="{% static 'img/cook_it.png' %}" alt = "Logo Image">
+            <img class="slide" src="{% static 'img/pasta.webp' %}" alt="Image #1">
+            <img class="slide" src="{% static 'img/soup.jpeg' %}" alt="Image #2">
+            <img class="slide" src="{% static 'img/cake.jpeg' %}" alt="Image #3">
+            <img class="slide" src="{% static 'img/Pizza.webp' %}" alt="Image #4">
+            <img class="slide" src="{% static 'img/ribs.jpg' %}" alt="Image #5">
+            <img class="slide" src="{% static 'img/sushi.jpg' %}" alt="Image #6">
+            <img class="slide" src="{% static 'img/spaghetti.jpg' %}" alt="Image #7">
+            <img class="slide" src="{% static 'img/quesadilla.jpeg' %}" alt="Image #8">
+            <img class="slide" src="{% static 'img/waffles.jpeg' %}" alt="Image #9">
+            <img class="slide" src="{% static 'img/burger.jpg' %}" alt="Image #10">
+        </div>
+    </div>
+
             <a href="#" class="view-all-btn">View All Categories</a>
             
             <div class="category-grid">
                 {% for category in categories %}
                 <a href="{% url 'category' category.id %}" class="category-item">
                     <img src="{% static 'img/icon_'|add:category.name|lower|add:'.png' %}" alt="{{ category.name }}">
-                    <p>{{ category.name }}</p>
                 </a>
                 {% endfor %}
             </div>
         </section>
-    </div>
+          </div>
+        {% endblock content %}
+
     
-{% endblock content %}
