@@ -1,5 +1,6 @@
+
 body{
-    background-color: rgb(230, 54, 54);
+    background-color: rgb(230, 70, 70);
 }
 
 
@@ -267,3 +268,5 @@ a {
     font-weight: bold;
     color: var(--color-text-dark);
 }
+
+
