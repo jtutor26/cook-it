@@ -42,9 +42,7 @@
         </section>
 
         <section class="categories-area">
-            <h2>Categories</h2>
-            <a href="#" class="view-all-btn">View All Categories</a>
-            
+            <h2>Categories</h2>          
             <div class="category-grid">
                 {% for category in categories %}
                 <a href="{% url 'category' category.id %}" class="category-item">
