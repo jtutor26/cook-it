@@ -20,11 +20,10 @@ SIGN IN: none needed (i think)
 
 template_paths:dict={
     #'VIEW':'PATH',
-    'home':'base.html',
-    'category':'base.html',
+    'home':'index.html',
+    'category':'food_category.html',
     'recipe':'base.html',
     'profile':'base.html',
-    'logout':'base.html',
 }
 
 # ---------- FBVs ----------
@@ -60,9 +59,6 @@ def add_comment(request, recipe_id):
         return redirect('recipe', recipe_name=recipe.name) 
 
     return redirect('home')
-
-def logout(request):
-    return render(request, template_paths['logout'], {})
 
 # ---------- CBVs ----------
 class SignUp(generic.CreateView):
