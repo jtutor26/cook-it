@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-  <h2>Logged Out</h2>
-  <p>You have been successfully logged out.</p>
-  <a href="{% url 'home' %}">Return to Home</a>
+<div class="form-container text-center">
+  <h2>👋 You have been successfully logged out.</h2>
+  <p>Thank you for visiting Cook-It! We hope to see you again soon.</p>
+  <div class="mt-5">
+    <a href="{% url 'home' %}" class="view-recipe-btn">Return to Home</a>
+    <a href="{% url 'login' %}" class="view-recipe-btn" style=>Log In Again</a>
+  </div>
+</div>
 {% endblock %}

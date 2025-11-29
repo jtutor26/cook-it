@@ -12,7 +12,7 @@
                 <div class="featured-text-box">
                     <span class="hot-recipes-tag">Hot Recipes</span>
                     <h1>{{ featured_recipe.name }}</h1>
-                    <p class="recipe-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. (Placeholder text)</p>
+                    <p class="recipe-summary">(Placeholder text)</p>
 
                     <div class="recipe-meta">
                         <span class="meta-item">
@@ -25,8 +25,8 @@
 
                     <div class="recipe-author-actions">
                         <div class="author-info">
-                            <span class="author-name">{{ featured_recipe.author.get_full_name }}</span>
-                            <span class="post-date">18 March 2024</span>
+                            <span class="author-name">{{ featured_recipe.author.get_full_name|default:featured_recipe.author.username }}</span>
+                            <span class="post-date">(Placeholder text)</span>
                         </div>
                         <a href="{% url 'recipe' featured_recipe.id %}" class="view-recipe-btn">View Recipes</a>
                     </div>
@@ -34,7 +34,7 @@
 
                 <div class="featured-image-box">
                     <span class="handpicked-tag">HANDPICKED RECIPES</span>
-                    <img src="{% static 'img/chicken_wings.jpg' %}" alt="{{ featured_recipe.name }}"> 
+                    <img src="{% static 'img/.jpg' %}" alt="{{ featured_recipe.name }}"> 
                 </div>
             </div>
             {% endif %}
@@ -42,11 +42,13 @@
         </section>
 
         <section class="categories-area">
-            <h2>Categories</h2>          
-            <div class="category-grid">
+            <h2>Categories</h2>
+            <a href="#" class="view-all-btn">View All Categories</a>
+            
+           <div class="category-grid">
                 {% for category in categories %}
                 <a href="{% url 'category' category.id %}" class="category-item">
-                    <img src="{% static 'img/icon_'|add:category.name|lower|add:'.png' %}" alt="{{ category.name }}">
+                    <img src="{% static category.get_icon_path %}" alt="{{ category.name }}"> 
                     <p>{{ category.name }}</p>
                 </a>
                 {% endfor %}
