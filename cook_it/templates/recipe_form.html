@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-container" style="max-width: 800px; margin: 2rem auto;">
+    <h2>Share a New Recipe</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <fieldset>
+            <legend>Recipe Details</legend>
+            <div class="form-fields">
+                {{ form.as_p }}
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Ingredients</legend>
+            {{ ingredient_formset.management_form }}
+            <div class="form-fields formset">
+                {% for form in ingredient_formset %}
+                    <div class="form-field-group inline">
+                        {{ form.id }}
+                        {{ form.quantity }}
+                        {{ form.unit }}
+                        {{ form.name }}
+                        {% if form.instance.pk %}{{ form.DELETE }}{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Instructions</legend>
+            {{ instruction_formset.management_form }}
+            <div class="form-fields formset">
+                {% for form in instruction_formset %}
+                    <div class="form-field-group">
+                        {{ form.id }}
+                        {{ form.description }}
+                        {% if form.instance.pk %}{{ form.DELETE }}{% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+
+        <button type="submit" class="view-recipe-btn" style="margin-top: 2rem;">Save Recipe</button>
+    </form>
+</div>
+{% endblock content %}

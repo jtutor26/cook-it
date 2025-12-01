@@ -6,9 +6,7 @@ from django.contrib.auth.models import User
 class Category(models.Model):
     name=models.CharField(max_length=16)
 
-    # this helps the linter understand the reverse relationship from Recipe
     recipes: models.manager.Manager['Recipe']
-    # these are properties that give the average cost and raiting
     @property
     def average_cost(self):
         result = self.recipes.aggregate(avg_cost=models.Avg('cost'))
@@ -40,6 +38,7 @@ Both ingredients and Instructions are their own models because they are lists
 Using this method compared to just a str (using a textfield)
 This way creates structered and relaional data and is more reliable
 '''
+
 
 class Ingredient(models.Model):
     #links to recipe
@@ -73,24 +72,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'On {self.recipe.name} {self.author.get_full_name} commented: {self.text[:50]}...'
-    
-
-
-
-# models.py (Add this method to the Category model)
-
-#class Category(models.Model):
-    # ... existing fields ...
-    
-    # NEW METHOD to return the full image path based on known extensions
-    #def get_icon_path(self):
-      #  name_lower = self.name.lower()
-       # if name_lower == 'breakfast':
-       #     ext = 'jpg'
-       # elif name_lower in ['dessert', 'vegan']:
-        #    ext = 'png'
-       # else:
-            # Default for chocolate, lunch, meat (and any unknown)
-        #    ext = 'webp' 
-        
-       # return f'img/icon_{name_lower}.{ext}'

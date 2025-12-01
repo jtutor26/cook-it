@@ -3,57 +3,42 @@
 
 {% block content %}
     
-    <div class="main-content-wrapper">
+    <section class="featured-recipe-area">
+        
+        {% if featured_recipe %}
+        <div class="featured-text-box">
+            <h1>{{ featured_recipe.name }}</h1>
 
-        <section class="featured-recipe-area">
-            
-            {% if featured_recipe %}
-            <div class="featured-content-container">
-                <div class="featured-text-box">
-                    <span class="hot-recipes-tag">Hot Recipes</span>
-                    <h1>{{ featured_recipe.name }}</h1>
-                    <p class="recipe-summary">(Placeholder text)</p>
-
-                    <div class="recipe-meta">
-                        <span class="meta-item">
-                            {{ featured_recipe.cook_time }}
-                        </span>
-                        <span class="meta-item">
-                            {{ featured_recipe.category.name }}
-                        </span>
-                    </div>
-
-                    <div class="recipe-author-actions">
-                        <div class="author-info">
-                            <span class="author-name">{{ featured_recipe.author.get_full_name|default:featured_recipe.author.username }}</span>
-                            <span class="post-date">(Placeholder text)</span>
-                        </div>
-                        <a href="{% url 'recipe' featured_recipe.id %}" class="view-recipe-btn">View Recipes</a>
-                    </div>
-                </div>
-
-                <div class="featured-image-box">
-                    <span class="handpicked-tag">HANDPICKED RECIPES</span>
-                    <img src="{% static 'img/.jpg' %}" alt="{{ featured_recipe.name }}"> 
-                </div>
+            <div class="recipe-meta">
+                <span class="meta-item">
+                    {{ featured_recipe.cook_time|time:"i" }} min
+                </span>
+                <span class="meta-item">
+                    {{ featured_recipe.category.name }}
+                </span>
             </div>
-            {% endif %}
 
-        </section>
-
-        <section class="categories-area">
-            <h2>Categories</h2>
-            <a href="#" class="view-all-btn">View All Categories</a>
-            
-           <div class="category-grid">
-                {% for category in categories %}
-                <a href="{% url 'category' category.id %}" class="category-item">
-                    <img src="{% static category.get_icon_path %}" alt="{{ category.name }}"> 
-                    <p>{{ category.name }}</p>
-                </a>
-                {% endfor %}
+            <div class="recipe-author-actions">
+                <div class="author-info">
+                    <span class="author-name">{{ featured_recipe.author.get_full_name|default:featured_recipe.author.username }}</span>
+                </div>
+                <a href="{% url 'recipe' featured_recipe.id %}" class="view-recipe-btn">View Recipe</a>
             </div>
-        </section>
-    </div>
+        </div>
+        {% endif %}
+
+    </section>
+
+    <section class="categories-area">
+        <h2>Categories</h2>
+        
+       <div class="category-grid">
+            {% for category in categories %}
+            <a href="{% url 'category' category.id %}" class="category-item">
+                <p>{{ category.name }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
     
 {% endblock content %}

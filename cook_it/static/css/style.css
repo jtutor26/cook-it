@@ -1,19 +1,16 @@
-
 body{
     background-color: rgb(230, 70, 70);
+html, body {
+    height: 100%;
+    margin: 0;
 }
-
-
-
-
-
+}
 
 /* --- Global Styles --- */
 
 :root {
-    /* Updated colors to match the screenshot */
-    --color-primary: #e24c4b; /* Dominant Red */
-    --color-secondary: #ffc93c; /* Accent Yellow/Gold for tags/buttons */
+    --color-primary: #e24c4b;
+    --color-secondary: #ffc93c;
     --color-text-dark: #222222;
     --color-text-light: #ffffff;
     --font-heading: 'Georgia', serif; 
@@ -23,7 +20,7 @@ body{
 * {
     box-sizing: border-box;
     padding: 0;
-    margin: 0; /* Added margin: 0 to the global reset */
+    margin: 0;
 }
 
 body {
@@ -42,13 +39,15 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 20px 80px;
-    background-color: var(--color-primary); /* Changed to the primary red/orange */
-    box-shadow: none; /* Removed box shadow to match screenshot */
-    color: var(--color-text-light); /* Set default text color to light for the nav */
+    background-color: var(--color-primary);
+    box-shadow: none;
+    color: var(--color-text-light);
+    flex-direction: row;
+
 }
 
 #logo_picture{
-    width: 0; /* Hide the Cook-It logo image, as the screenshot only uses text */
+    width: 0;
     height: 0;
     display: none;
 }
@@ -56,7 +55,7 @@ a {
 .main-nav .logo {
     font-size: 24px;
     font-weight: bold;
-    color: var(--color-text-light); /* Logo is white in the screenshot */
+    color: var(--color-text-light);
 }
 
 .main-nav nav ul {
@@ -70,17 +69,17 @@ a {
 }
 
 .main-nav nav ul li a {
-    color: var(--color-text-light); /* Nav links are white */
+    color: var(--color-text-light);
 }
 
 
 .main-nav .auth-buttons a {
-    margin-left: 15px; /* Added spacing between auth buttons */
+    margin-left: 15px;
 }
 
 .main-nav .sign-up-btn {
-    background-color: var(--color-text-light); /* Sign Up button is white */
-    color: var(--color-primary); /* Text is primary red */
+    background-color: var(--color-text-light);
+    color: var(--color-primary);
     padding: 10px 25px;
     border-radius: 25px;
     font-weight: bold;
@@ -94,12 +93,13 @@ a {
 
 /* --- 2. Main Content Wrapper & Featured Area (index.html) --- */
 .main-content-wrapper {
-    background-color: var(--color-primary); /* The main red background */
+    background-color: var(--color-primary);
     padding: 0 50px 50px 50px;
+    flex-grow: 1;
 }
 
 .featured-recipe-area {
-    padding: 100px 0 50px 0; /* Adjusted padding */
+    padding: 100px 0 50px 0;
 }
 
 .featured-content-container {
@@ -108,17 +108,16 @@ a {
     border-radius: 20px;
     overflow: hidden;
     position: relative; 
-    max-width: 1200px; /* Constrain max width for better centering */
-    margin: 0 auto; /* Center the featured container */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Red side bars - Modified to be thicker and exactly like the screenshot */
 .featured-content-container::before,
 .featured-content-container::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 50px; /* Increased width to match screenshot */
+    width: 50px;
     height: 100%;
     background-color: var(--color-primary);
     z-index: 10;
@@ -151,8 +150,8 @@ a {
 
 .hot-recipes-tag {
     background-color: var(--color-secondary);
-    padding: 8px 20px; /* Adjusted padding */
-    border-radius: 25px; /* Made more circular */
+    padding: 8px 20px;
+    border-radius: 25px;
     font-weight: bold;
     font-size: 14px;
     display: inline-block;
@@ -161,7 +160,7 @@ a {
 .recipe-summary {
     color: #666;
     margin-bottom: 30px;
-    font-size: 16px; /* Added font size */
+    font-size: 16px;
     line-height: 1.5;
 }
 
@@ -175,11 +174,10 @@ a {
 .meta-item {
     font-weight: bold;
     color: #444;
-    padding-left: 30px; /* Space for the icons (which are currently missing, but CSS handles the space) */
+    padding-left: 30px;
     position: relative;
 }
 
-/* Placeholder icons for cook time and category */
 .meta-item:nth-child(1)::before, 
 .meta-item:nth-child(2)::before {
     content: '';
@@ -187,9 +185,9 @@ a {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 20px; /* Icon size placeholder */
+    width: 20px;
     height: 20px;
-    background-color: #ccc; /* Placeholder background */
+    background-color: #ccc;
     border-radius: 4px;
 }
 
@@ -203,7 +201,7 @@ a {
 
 .author-info {
     display: flex;
-    align-items: center; /* Align author items */
+    align-items: center;
     gap: 10px;
 }
 
@@ -212,7 +210,7 @@ a {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #f1f1f1; /* Placeholder for profile image */
+    background-color: #f1f1f1;
     border: 1px solid #ddd;
 }
 
@@ -256,7 +254,7 @@ a {
     top: 40px;
     right: 40px;
     background-color: var(--color-secondary);
-    color: var(--color-text-dark); /* Text color inside the tag */
+    color: var(--color-text-dark);
     padding: 10px 20px;
     border-radius: 50%; 
     text-align: center;
@@ -275,7 +273,7 @@ a {
 .categories-area {
     background-color: var(--color-primary);
     padding: 50px 0;
-    max-width: 1200px; /* Match max width of featured container */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -284,7 +282,7 @@ a {
     font-size: 40px;
     margin-bottom: 20px;
     display: inline-block;
-    color: var(--color-text-dark); /* Categories H2 is dark in the screenshot */
+    color: var(--color-text-dark);
 }
 
 .view-all-btn {
@@ -315,7 +313,7 @@ a {
     align-items: center;
     justify-content: center;
     transition: transform 0.2s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Added light shadow for lift */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .category-item:hover {
@@ -360,7 +358,7 @@ a {
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #4ade80; /* Accent color */
+    border: 4px solid #4ade80;
 }
 
 .profile-info {
@@ -392,10 +390,14 @@ a {
     border-bottom: 2px solid #4ade80;
 }
 
+/* --- Recipe Card Styling --- */
 .recipe-list-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .recipe-card {
@@ -404,11 +406,18 @@ a {
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .recipe-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+.recipe-card .card-body h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
 }
 
 .recipe-image {
@@ -416,11 +425,15 @@ a {
     height: 200px;
     object-fit: cover;
     display: block;
-}
+.recipe-card .recipe-meta {
+    font-size: 0.9rem;
+}}
 
 .card-body {
     padding: 15px;
-}
+.recipe-card .action-btn {
+    font-size: 0.95rem;
+}}
 
 .card-body h3 a {
     font-size: 1.2em;
@@ -429,7 +442,10 @@ a {
     margin-top: 0;
     display: block;
     margin-bottom: 10px;
-}
+/* --- Homepage Featured Recipe Styling --- */
+.featured-recipe-area {
+    padding: 2rem 1rem;
+}}
 
 .card-body h3 a:hover {
     color: #4ade80;
@@ -478,15 +494,29 @@ a {
     text-align: center;
     padding: 40px;
     border: 2px dashed #ddd;
+.featured-text-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2.5rem;
     border-radius: 8px;
     margin-top: 20px;
-}
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}}
 
 .no-recipes-message p {
     margin-bottom: 20px;
     font-size: 1.1em;
     color: #666;
-}
+.featured-text-box .recipe-author-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}}
 
 
 
@@ -496,20 +526,24 @@ a {
 
 .form-container {
     max-width: 450px;
-    margin: 80px auto; /* Center the form and add top/bottom spacing */
+    margin: 80px auto;
     padding: 40px;
-    background-color: var(--color-text-light); /* White background for the form card */
+    background-color: var(--color-text-light);
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border-top: 5px solid var(--color-primary); /* Red top border for flair */
+    border-top: 5px solid var(--color-primary);
 }
 
 .form-container h2 {
     font-size: 2em;
     color: var(--color-text-dark);
     margin-bottom: 25px;
+/* --- Homepage Categories Styling --- */
+.categories-area {
+    margin-top: 3rem;
+    padding: 0 2rem 3rem;
     text-align: center;
-}
+}}
 
 .form-container p {
     margin-bottom: 15px;
@@ -517,14 +551,12 @@ a {
     text-align: center;
 }
 
-/* Base form styling */
 form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Styling for form labels */
 label {
     font-weight: bold;
     color: var(--color-text-dark);
@@ -532,7 +564,6 @@ label {
     margin-bottom: 5px;
 }
 
-/* Styling for input fields */
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -540,10 +571,18 @@ textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
+/* --- Category Page Header Styling --- */
+.category-header {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.3s;
-}
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}}
 
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -551,10 +590,14 @@ input[type="password"]:focus,
 textarea:focus {
     border-color: var(--color-primary);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(226, 76, 75, 0.2); /* Light primary glow on focus */
-}
+    box-shadow: 0 0 0 2px rgba(226, 76, 75, 0.2);
+/* --- Recipe Detail Page Styling --- */
+.recipe-detail-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}}
 
-/* Styling for the submit button */
 .submit-btn {
     background-color: var(--color-primary);
     color: var(--color-text-light);
@@ -569,27 +612,32 @@ textarea:focus {
 }
 
 .submit-btn:hover {
-    background-color: #c03d3c; /* A slightly darker red */
+    background-color: #c03d3c;
 }
 
-/* Styling for helper links (e.g., Forgot Password) */
 .form-helper-text {
+.recipe-detail-header {
     text-align: center;
     margin-top: 20px;
-}
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}}
 
 .form-helper-text a {
     color: var(--color-primary);
     font-weight: 500;
     transition: color 0.3s;
-}
+.recipe-detail-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}}
 
 .form-helper-text a:hover {
     color: #c03d3c;
     text-decoration: underline;
 }
 
-/* Error and message styling */
 .error-message,
 .success-message {
     padding: 10px;
@@ -614,25 +662,25 @@ textarea:focus {
 /* --- 5. Profile Page Adjustments (profile.html) --- */
 
 .profile-container {
-    background-color: var(--color-text-light); /* Ensure profile card is white */
-    margin-top: 80px; /* Add spacing to push content down */
+    background-color: var(--color-text-light);
+    margin-top: 80px;
     margin-bottom: 80px;
 }
 
 .profile-header {
-    border-bottom: 1px solid #ddd; /* Lighter divider */
+    border-bottom: 1px solid #ddd;
 }
 
 .profile-avatar {
-    border: 4px solid var(--color-secondary); /* Use the yellow accent color for avatar border */
+    border: 4px solid var(--color-secondary);
 }
 
 .posted-recipes-section h2 {
-    border-bottom: 2px solid var(--color-secondary); /* Use the yellow accent color for recipe list divider */
+    border-bottom: 2px solid var(--color-secondary);
 }
 
 .action-btn.view-btn {
-    background-color: var(--color-primary); /* Use primary red for 'View' button */
+    background-color: var(--color-primary);
 }
 
 .action-btn.view-btn:hover {
@@ -642,7 +690,7 @@ textarea:focus {
 /* --- 6. Recipe Detail Page (recipe.html) --- */
 
 .recipe-detail-container {
-    background-color: var(--color-text-light); /* White background for the main recipe content */
+    background-color: var(--color-text-light);
     max-width: 1000px;
     margin: 40px auto;
     padding: 30px;
@@ -657,6 +705,7 @@ textarea:focus {
 }
 
 .recipe-meta-details {
+.recipe-meta-bar {
     display: flex;
     gap: 30px;
     margin-bottom: 20px;
@@ -664,7 +713,7 @@ textarea:focus {
     color: #666;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
-}
+}}
 
 .recipe-image-large {
     width: 100%;
@@ -691,7 +740,7 @@ textarea:focus {
     font-size: 1.5em;
     margin-bottom: 15px;
     padding-bottom: 5px;
-    border-bottom: 2px solid var(--color-secondary); /* Yellow accent divider */
+    border-bottom: 2px solid var(--color-secondary);
 }
 
 .ingredients-list ul,
@@ -735,244 +784,159 @@ textarea:focus {
     background-color: var(--color-primary);
     color: var(--color-text-light);
 }
-
-
-
-
-
-/* Define color variables for easy theme changes 
-:root {
-    --primary-color: white; /* Bright Green 
-    --secondary-color: #090b0b; /* Teal/Blue-Green 
-    --background-color: #e73838; /* Light Gray Background 
-    --text-color: #333; /* Dark Text 
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --border-radius: 8px;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif; /* Use your desired font here 
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.main-content-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Base button style for the prominent green buttons 
-.view-recipe-btn, .sign-up-btn, button[type="submit"] {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: rgb(11, 11, 11);
-    text-decoration: none;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
-}
-
-.view-recipe-btn:hover, .sign-up-btn:hover, button[type="submit"]:hover {
-    background-color: #34d399; /* Slightly darker green 
-}
-
-.main-nav {
-    background-color: #ee4747;
-    box-shadow: var(--shadow-light);
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.8em;
-    font-weight: 900;
-    color: var(--primary-color);
-}
-
-.main-nav img {
-    /* Style for the logo image 
-    height: 40px; 
-    margin-right: 20px;
-}
-
-.main-nav nav ul {
-    list-style: none;
-    display: flex;
-}
-
-.main-nav nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 10px 15px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.main-nav nav ul li a:hover {
-    color: var(--secondary-color);
-}
-
-.auth-buttons a {
-    margin-left: 10px;
-}
-
-.featured-recipe-area {
-    margin: 40px 0;
-}
-
-.featured-content-container {
-    display: flex;
-    background-color: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: var(--shadow-light);
-    min-height: 400px;
-}
-
-.featured-text-box {
-    padding: 40px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.hot-recipes-tag, .handpicked-tag {
-    display: inline-block;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.hot-recipes-tag {
-    background-color: var(--secondary-color);
-    color: white;
-}
-
-.featured-text-box h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
-}
-
-.recipe-meta {
-    display: flex;
-    gap: 20px;
-    margin: 20px 0;
-    font-size: 0.9em;
-    color: #666;
-}
-
-.recipe-meta .meta-item::before {
-    content: "• ";
-    color: var(--primary-color);
-    font-weight: bold;
-}
-
-.recipe-author-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.author-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.author-name {
-    font-weight: bold;
-    color: var(--text-color);
-}
-
-.featured-image-box {
-    flex: 1;
-    position: relative;
-}
-
-.featured-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.handpicked-tag {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    z-index: 10;
-}
-
-.categories-area {
-    margin: 40px 0;
-}
-
-.categories-area h2 {
-    font-size: 1.8em;
-    color: var(--text-color);
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.view-all-btn {
-    float: right;
-    text-decoration: none;
-    color: var(--secondary-color);
-    font-weight: 500;
-    padding-top: 10px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.category-item {
-    background-color: white;
-    padding: 20px;
-    text-align: center;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-light);
-    text-decoration: none;
-    color: var(--text-color);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.category-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
 .category-item img {
     width: 80px;
     height: 80px;
     object-fit: contain;
     margin-bottom: 10px;
-}
+.ingredients-list, .instructions-list {
+    padding-left: 1.5rem;
+}}
 
 .category-item p {
     font-weight: bold;
     text-transform: capitalize;
 }
-/*
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.main-content-wrapper {
+    flex-grow: 1;
+}
+
+/* --- Recipe Card Styling --- */
+.recipe-list-grid {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.recipe-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.recipe-card .card-body h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+}
+
+.recipe-card .recipe-meta {
+    font-size: 0.9rem;
+}
+
+.recipe-card .action-btn {
+    font-size: 0.95rem;
+}
+
+/* --- Homepage Featured Recipe Styling --- */
+.featured-recipe-area {
+    padding: 2rem 1rem;
+}
+
+.featured-text-box {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.featured-text-box .recipe-author-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* --- Homepage Categories Styling --- */
+.categories-area {
+    margin-top: 3rem;
+    padding: 0 2rem 3rem;
+    text-align: center;
+}
+
+/* --- Category Page Header Styling --- */
+.category-header {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+/* --- Recipe Detail Page Styling --- */
+.recipe-detail-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.recipe-detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.recipe-detail-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.recipe-meta-bar {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.recipe-detail-image img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.recipe-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.ingredients-panel, .instructions-panel, .comments-section {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.ingredients-panel h2, .instructions-panel h2, .comments-section h2 {
+    font-size: 1.6rem;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.ingredients-list, .instructions-list {
+    padding-left: 1.5rem;
+}

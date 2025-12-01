@@ -1,4 +1,68 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
- 
-{% endblock %}
+<div class="recipe-detail-container">
+    <header class="recipe-detail-header">
+        <h1>{{ recipe.name }}</h1>
+        <div class="recipe-meta-bar">
+            <span>By: <strong>{{ recipe.author.get_full_name|default:recipe.author.username }}</strong></span>
+            <span>Category: <a href="{% url 'category' recipe.category.id %}">{{ recipe.category.name }}</a></span>
+            <span>Cook Time: {{ recipe.cook_time|time:"i" }} mins</span>
+            <span>Rating: {{ recipe.rating|floatformat:1 }}/5.0</span>
+        </div>
+    </header>
+
+    <div class="recipe-body-grid">
+        <aside class="ingredients-panel">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+            {% for ingredient in recipe.ingredients.all %}
+                <li>
+                    {{ ingredient.quantity }} 
+                    {{ ingredient.unit }} 
+                    {{ ingredient.name }}
+                </li>
+            {% empty %}
+                <li>No ingredients listed.</li>
+            {% endfor %}
+        </ul>
+        </aside>
+
+        <main class="instructions-panel">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
+                {% for instruction in recipe.instructions.all %}
+                    <li>{{ instruction.description }}</li>
+                {% empty %}
+                    <li>No instructions provided.</li>
+                {% endfor %}
+            </ol>
+        </main>
+    </div>
+
+    <section class="comments-section">
+        <h2>Comments ({{ recipe.comments.all|length }})</h2>
+        {% if user.is_authenticated %}
+            <form action="{% url 'add_comment' recipe.id %}" method="post" class="comment-form">
+                {% csrf_token %}
+                <textarea name="comment_text" placeholder="Share your thoughts on this recipe..." required></textarea>
+                <button type="submit" class="view-recipe-btn">Post Comment</button>
+            </form>
+        {% else %}
+            <p><a href="{% url 'login' %}?next={{ request.path }}">Log in</a> to post a comment.</p>
+        {% endif %}
+
+        <div class="comment-list">
+            {% for comment in recipe.comments.all %}
+                <div class="comment">
+                    <p class="comment-author">{{ comment.author.username }}</p>
+                    <p class="comment-text">{{ comment.text }}</p>
+                </div>
+            {% empty %}
+                <p>No comments yet. Be the first to share your thoughts!</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock content %}

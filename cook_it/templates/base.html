@@ -3,6 +3,185 @@
 <head>
     <Title>Cook-it!</Title>
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <style>
+
+        /* CSS I added because the stactic CSS file confused me*/
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content-wrapper {
+            flex-grow: 1;
+        }
+
+        /* --- Recipe Card Styling --- */
+        .recipe-list-grid {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .recipe-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .recipe-card .card-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .recipe-card .recipe-meta {
+            font-size: 0.9rem;
+        }
+
+        .recipe-card .action-btn {
+            font-size: 0.95rem;
+        }
+
+        /* --- Homepage Featured Recipe Styling --- */
+        .featured-recipe-area {
+            padding: 2rem 1rem;
+        }
+
+        .featured-text-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .featured-text-box .recipe-author-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        /* --- Homepage Categories Styling --- */
+        .categories-area {
+            margin-top: 3rem;
+            padding: 0 2rem 3rem;
+            text-align: center;
+        }
+
+        /* --- Category Page Header Styling --- */
+        .category-header {
+            max-width: 900px;
+            margin: 0 auto 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        /* --- Recipe Detail Page Styling --- */
+        .recipe-detail-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem 2rem;
+        }
+
+        .recipe-detail-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .recipe-detail-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .recipe-meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .recipe-body-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .ingredients-panel, .instructions-panel, .comments-section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .ingredients-panel h2, .instructions-panel h2, .comments-section h2 {
+            font-size: 1.6rem;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .ingredients-list, .instructions-list {
+            padding-left: 1.5rem;
+        }
+
+        /* --- Recipe Comments Styling --- */
+        .comment-form {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .comment-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .comment-form button {
+            align-self: flex-start;
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .comment {
+            background-color: #f9f9f9;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            color: #333;
+        }
+    </style>
     <script src="{% static 'js/main.js' %}" defer></script>
 </head>
 <body>
@@ -14,8 +193,9 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="#">Recipes</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                {% endif %}
             </ul>
         </nav>
         <div class="auth-buttons">

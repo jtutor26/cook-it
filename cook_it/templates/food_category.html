@@ -1,19 +1,35 @@
 {%extends 'base.html'%}
 {%load static%}
-    {%block content%}
-        <h1>{{ category.name }} Recipes 🔪</h1>
-        
-        <p>Average Cost: ${{ category.average_cost|floatformat:2 }}</p>
-        <p>Average Rating: {{ category.average_rating|floatformat:1 }}</p>
 
-        <h2>List of {{ category.name }} recipes:</h2>
-        <ul>
-            {% for recipe in category.recipes.all %} 
-            <li>
-                <a href="{% url 'recipe' recipe.id %}">{{ recipe.name }}</a>
-                (Cook Time: {{ recipe.cook_time }})
-            </li>
-            {% endfor %}
-        </ul>
-        
-    {%endblock content%}
+{%block content%}
+<div class="category-detail-container" style="padding: 2rem;">
+    <header class="category-header">
+        <h1>{{ category.name }} Recipes 🔪</h1>
+        <div class="category-stats" style="display: flex; justify-content: center; gap: 2rem; color: #555;">
+            <span>Average Cost: ${{ category.average_cost|floatformat:2 }}</span>
+            <span>Average Rating: {{ category.average_rating|floatformat:1 }}/5.0</span>
+        </div>
+    </header>
+
+    <div class="recipe-list-grid">
+        {% for recipe in category.recipes.all %}
+        <div class="recipe-card">
+            <div class="recipe-image-placeholder"></div>
+            <div class="card-body">
+                <h3><a href="{% url 'recipe' recipe.id %}">{{ recipe.name }}</a></h3>
+                <p class="recipe-meta">
+                    <span>By: {{ recipe.author.username }}</span>
+                    <span>Rating: {{ recipe.rating|floatformat:1 }}</span>
+                    <span>Time: {{ recipe.cook_time|time:"i" }} min</span>
+                </p>
+                <div class="recipe-actions">
+                    <a href="{% url 'recipe' recipe.id %}" class="action-btn view-btn">View Recipe</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p style="grid-column: 1 / -1; text-align: center;">There are no recipes in this category yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{%endblock content%}
